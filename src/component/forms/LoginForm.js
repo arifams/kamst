@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
   	},
   	loading: false,
   	errors: {}
-  }
+  };
 
   onChange = e => 
     this.setState({ 
@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
   	const errors = {};
   	// show erorrs on email and password input
   	if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
-  	if (!data.password) errors.password = "Password Error";
+  	if (!data.password) errors.password = "No blank password";
   	return errors;
   }
 
@@ -55,13 +55,13 @@ class LoginForm extends React.Component {
   	      { errors.email && <InlineError text={errors.email} /> }
   	    </Form.Field>
   	    <Form.Field error={!!errors.password}>
-  	      <label htmlFor="Password">Password</label>
+  	      <label htmlFor="password">Password</label>
   	      <input 
-  	        type="Password" 
-  	        id="Password" 
-  	        name="Password" 
-  	        placeholder="Password" 
-  	        value={data.Password}
+  	        type="password" 
+  	        id="password" 
+  	        name="password" 
+  	        placeholder="password" 
+  	        value={data.password}
   	        onChange={this.onChange}
   	      />
   	      { errors.password && <InlineError text={errors.password} /> }

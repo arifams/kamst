@@ -5,7 +5,7 @@ import LoginPage from './component/pages/LoginPage';
 
 
 const App = () => (
-  <div class="ui container">
+  <div className="ui container">
     <Route path="/" exact component={HomePage} />
     <Route path="/login" exact component={LoginPage} />
   </div>
