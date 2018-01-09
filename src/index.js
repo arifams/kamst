@@ -8,7 +8,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import rootReducer from "./rootReducer";
+import rootReducer from './rootReducer';
+import { userLoggedIn } from './actions/auth';
 
 // Because we are gonna use combine reducer to split function later
 // rootReducer for whole tree and middleware for thunk redux
@@ -16,6 +17,11 @@ const store = createStore(
   rootReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
+
+if (localStorage.kamstJWT) {
+  const user = { token: localStorage.kamstJWT };
+  store.dispatch(userLoggedIn(user)); // passing user login to dispatch
+}
 
 ReactDOM.render(
   <BrowserRouter>
